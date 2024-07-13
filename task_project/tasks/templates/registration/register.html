@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="end">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="'post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <burron type="submit">Register</burron>
+    </form>
+</body>
+</html>
