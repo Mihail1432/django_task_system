@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task List</title>
+    <title>Task Detail</title>
     <style>
         body {
             background-color: #121212;
@@ -12,19 +12,18 @@
             padding: 50px 20px;
         }
         .task {
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 20px;
             border-bottom: 1px solid #333;
         }
-        .task h3 {
+        h2 {
             color: #E0E0E0;
-            margin: 0;
+            margin-top: 0;
         }
-        .task p {
+        p {
             color: #B0B0B0;
         }
-        .add-task {
-            margin-bottom: 20px;
+        .actions {
+            margin-top: 20px;
         }
         a {
             color: #E0E0E0;
@@ -32,6 +31,7 @@
             background-color: #2A2A2A;
             padding: 5px 10px;
             border-radius: 4px;
+            margin-right: 5px;
             transition: background-color 0.3s ease;
         }
         a:hover {
@@ -40,21 +40,14 @@
     </style>
 </head>
 <body>
-    <div class="add-task">
-        <a href="{% url 'task_create' %}">Add New Task</a>
-    </div>
-    {% if tasks %}
-        {% for task in tasks %}
-        <div class="task">
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
-            <a href="{% url 'task_detail' task.pk %}">View</a> |
-            <a href="{% url 'task_edit' task.pk %}">Edit</a> |
+    <div class="task">
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <div class="actions">
+            <a href="{% url 'task_edit' task.pk %}">Edit</a>
             <a href="{% url 'task_delete' task.pk %}">Delete</a>
+            <a href="{% url 'task_list' %}">Back to Task List</a>
         </div>
-        {% endfor %}
-    {% else %}
-        <p>No tasks found.</p>
-    {% endif %}
+    </div>
 </body>
 </html>
